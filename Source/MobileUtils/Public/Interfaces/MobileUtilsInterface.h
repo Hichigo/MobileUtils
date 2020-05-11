@@ -37,4 +37,9 @@ public:
 	* @return - Device ID
 	*/
 	virtual FString GetDeviceId();
+
+	/**
+	* Open app store
+	*/
+	virtual void LaunchAppStore();
 };

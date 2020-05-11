@@ -18,4 +18,5 @@ public:
 	virtual bool CheckGooglePlayServices() override;
 	virtual FString GetPersistentUniqueDeviceId() override;
 	virtual FString GetDeviceId() override;
+	virtual void LaunchAppStore() override;
 };

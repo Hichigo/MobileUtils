@@ -51,4 +51,10 @@ class MOBILEUTILS_API UMobileUtilsBlueprintLibrary : public UBlueprintFunctionLi
 	*/
 	UFUNCTION(BlueprintCallable, BlueprintPure, Category = MobileUtils)
 	static FString GetAuthToken();
+
+	/**
+	* Open app store
+	*/
+	UFUNCTION(BlueprintCallable, Category = MobileUtils)
+	static void LaunchAppStore();
 };

@@ -11,7 +11,7 @@ namespace UnrealBuildTool.Rules
 		public MobileUtils(ReadOnlyTargetRules Target) : base(Target)
 		{
 			PCHUsage = PCHUsageMode.UseExplicitOrSharedPCHs;
-            PrecompileForTargets = PrecompileTargetsType.Any;
+			PrecompileForTargets = PrecompileTargetsType.Any;
 
             PublicDefinitions.Add("WITH_MOBILEUTILS=1");
 
@@ -40,7 +40,7 @@ namespace UnrealBuildTool.Rules
 					)
 				);
 
-				PublicAdditionalFrameworks.Add(
+				/*PublicAdditionalFrameworks.Add(
 					new Framework(
 						"SAMKeychain",
 						"../ThirdParty/IOS/SAMKeychain.embeddedframework.zip",
@@ -54,10 +54,7 @@ namespace UnrealBuildTool.Rules
 						"SystemConfiguration",
 						"Security"
 					}
-				);
-
-				PublicAdditionalLibraries.Add("z");
-				PublicAdditionalLibraries.Add("sqlite3");
+				); */
 
 				string PluginPath = Utils.MakePathRelativeTo(ModuleDirectory, Target.RelativeEnginePath);
 				AdditionalPropertiesForReceipt.Add("IOSPlugin", Path.Combine(PluginPath, "MobileUtils_UPL_IOS.xml"));
@@ -65,7 +62,7 @@ namespace UnrealBuildTool.Rules
 			// Additional Frameworks and Libraries for Android
 			else if (Target.Platform == UnrealTargetPlatform.Android)
 			{
-				PrivateDependencyModuleNames.AddRange(new string[] { "Launch" });
+				PrivateDependencyModuleNames.AddRange(new[] { "Launch" });
 				string PluginPath = Utils.MakePathRelativeTo(ModuleDirectory, Target.RelativeEnginePath);
 				AdditionalPropertiesForReceipt.Add("AndroidPlugin", Path.Combine(PluginPath, "MobileUtils_UPL_Android.xml"));
 			}

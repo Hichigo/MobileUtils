@@ -21,10 +21,12 @@ public:
 	virtual bool CheckGooglePlayServices() override;
 	virtual FString GetPersistentUniqueDeviceId() override;
 	virtual FString GetDeviceId() override;
+	virtual void LaunchAppStore() override;
 
 	// JNI Methods
 	static jmethodID CheckInternetConnectionMethod;
 	static jmethodID CheckGooglePlayServicesMethod;
 	static jmethodID GetPersistentUniqueDeviceIdMethod;
 	static jmethodID GetDeviceIdMethod;
+	static jmethodID OpenAppStoreMethod;
 };

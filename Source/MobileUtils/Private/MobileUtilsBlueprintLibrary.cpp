@@ -62,3 +62,11 @@ FString UMobileUtilsBlueprintLibrary::GetAuthToken()
 
 	return FString();
 }
+
+void UMobileUtilsBlueprintLibrary::LaunchAppStore()
+{
+	#if PLATFORM_ANDROID || PLATFORM_IOS
+	 IMobileUtils::Get().GetPlatformInterface()->LaunchAppStore();
+#else
+#endif
+}

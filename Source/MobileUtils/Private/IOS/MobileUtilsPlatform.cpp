@@ -5,7 +5,7 @@
 #include "MobileUtilsPlatform.h"
 
 #import <Reachability/Reachability.h>
-#import <SAMKeychain/SAMKeychain.h>
+//#import <SAMKeychain/SAMKeychain.h>
 
 
 FMobileUtilsPlatform::FMobileUtilsPlatform()
@@ -30,7 +30,7 @@ bool FMobileUtilsPlatform::CheckGooglePlayServices()
 
 FString FMobileUtilsPlatform::GetPersistentUniqueDeviceId()
 {
-	NSString *AppName = [[[NSBundle mainBundle] infoDictionary] objectForKey:(NSString*)kCFBundleNameKey];
+	/*NSString *AppName = [[[NSBundle mainBundle] infoDictionary] objectForKey:(NSString*)kCFBundleNameKey];
 	NSString *PersistentUUID = [SAMKeychain passwordForService : AppName account : @"incoding"];
 
 	if (PersistentUUID == nil)
@@ -39,10 +39,28 @@ FString FMobileUtilsPlatform::GetPersistentUniqueDeviceId()
 		[SAMKeychain setPassword : PersistentUUID forService : AppName account : @"incoding"];
 	}
 
-	return FString(PersistentUUID);
+	return FString(PersistentUUID);*/
+	return FString("");
 }
 
 FString FMobileUtilsPlatform::GetDeviceId()
 {
 	return GetPersistentUniqueDeviceId();
+}
+
+void FMobileUtilsPlatform::LaunchAppStore()
+{
+	NSString* simple = @"itms-apps://itunes.apple.com/app/id361309726";
+	UIApplication* application = [UIApplication sharedApplication];
+	NSURL* URL = [NSURL URLWithString:simple];
+	[application openURL:URL
+		options:@{}
+		completionHandler:^(BOOL success) {
+		  if (success)
+		  {
+			  NSLog(@"Opened url");
+		  }
+		}];
+	
+
 }

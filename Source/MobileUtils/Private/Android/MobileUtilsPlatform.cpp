@@ -10,6 +10,7 @@ jmethodID FMobileUtilsPlatform::CheckInternetConnectionMethod;
 jmethodID FMobileUtilsPlatform::CheckGooglePlayServicesMethod;
 jmethodID FMobileUtilsPlatform::GetPersistentUniqueDeviceIdMethod;
 jmethodID FMobileUtilsPlatform::GetDeviceIdMethod;
+jmethodID FMobileUtilsPlatform::OpenAppStoreMethod;
 
 FMobileUtilsPlatform::FMobileUtilsPlatform()
 {
@@ -19,6 +20,7 @@ FMobileUtilsPlatform::FMobileUtilsPlatform()
 		CheckGooglePlayServicesMethod = FJavaWrapper::FindMethod(Env, FJavaWrapper::GameActivityClassID, "AndroidThunkJava_CheckGooglePlayServices", "()Z", false);
 		GetPersistentUniqueDeviceIdMethod = FJavaWrapper::FindMethod(Env, FJavaWrapper::GameActivityClassID, "AndroidThunkJava_GetPersistentUniqueDeviceId", "()Ljava/lang/String;", false);
 		GetDeviceIdMethod = FJavaWrapper::FindMethod(Env, FJavaWrapper::GameActivityClassID, "AndroidThunkJava_GetDeviceId", "()Ljava/lang/String;", false);
+		OpenAppStoreMethod = FJavaWrapper::FindMethod(Env, FJavaWrapper::GameActivityClassID, "AndroidThunkJava_OpenAppStore", "()V", false);
 	}
 }
 
@@ -72,4 +74,12 @@ FString FMobileUtilsPlatform::GetDeviceId()
 		Env->DeleteLocalRef(ResultDeviceIdString);
 	}
 	return ResultDeviceId;
+}
+
+void FMobileUtilsPlatform::LaunchAppStore()
+{
+	if (JNIEnv* Env = FAndroidApplication::GetJavaEnv())
+	{
+		FJavaWrapper::CallVoidMethod(Env, FJavaWrapper::GameActivityThis, FMobileUtilsPlatform::OpenAppStoreMethod);
+	}
 }

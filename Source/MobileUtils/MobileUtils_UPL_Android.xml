@@ -165,6 +165,18 @@
 		
 		return UniqueID;
 	}
+
+	public void AndroidThunkJava_OpenAppStore() 
+	{
+		Intent intent = new Intent(Intent.ACTION_VIEW)
+			.setData(Uri.parse("https://play.google.com/store/apps/details?id=" + getPackageName()));
+		try {
+			startActivity(new Intent(intent)
+						.setPackage("com.android.vending"));
+		} catch (android.content.ActivityNotFoundException exception) {
+			startActivity(intent);
+		}
+	}
 	</insert>
   </gameActivityClassAdditions>
 </root>
