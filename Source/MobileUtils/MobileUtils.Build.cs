@@ -73,6 +73,8 @@ namespace UnrealBuildTool.Rules
 				string PluginPath = Utils.MakePathRelativeTo(ModuleDirectory, Target.RelativeEnginePath);
 				AdditionalPropertiesForReceipt.Add("AndroidPlugin", Path.Combine(PluginPath, "MobileUtils_UPL_Android.xml"));
 			}
+
+			PublicIncludePathModuleNames.Add("MobileUtils");
 		}
 	}
 }
