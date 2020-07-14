@@ -5,6 +5,14 @@
 #include "IMobileUtils.h"
 #include "MobileUtilsBlueprintLibrary.h"
 
+#if PLATFORM_ANDROID
+#include "MobileUtils/Private/Android/MobileUtilsPlatform.h"
+#endif
+
+#if PLATFORM_IOS
+#include "MobileUtils/Private/IOS/MobileUtilsPlatform.h"
+#endif
+
 
 DEFINE_LOG_CATEGORY(LogMobileUtils);
 
