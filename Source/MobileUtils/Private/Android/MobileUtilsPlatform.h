@@ -5,9 +5,13 @@
 #pragma once
 
 #include "Interfaces/MobileUtilsInterface.h"
+
+#if PLATFORM_ANDROID
 #include "Android/AndroidJNI.h"
 #include "Android/AndroidApplication.h"
 #include <android_native_app_glue.h>
+#endif
+
 #include "EngineMinimal.h"
 #include "Core.h"
 
@@ -24,9 +28,11 @@ public:
 	virtual void LaunchAppStore() override;
 
 	// JNI Methods
+#if PLATFORM_ANDROID
 	static jmethodID CheckInternetConnectionMethod;
 	static jmethodID CheckGooglePlayServicesMethod;
 	static jmethodID GetPersistentUniqueDeviceIdMethod;
 	static jmethodID GetDeviceIdMethod;
 	static jmethodID OpenAppStoreMethod;
+#endif
 };
